@@ -96,7 +96,7 @@ Educación  Básica.
 **Jefe interno Área de informática en FGRCHILE.**
 Jcollao@fgrchile.cl
 
-Fono:9 4216 0145
+
 ----
 ### Idiomas
 **Ingles**
