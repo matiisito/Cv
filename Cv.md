@@ -27,11 +27,9 @@ Junio 2016 – diciembre 2017.
 -	Crear Macros en Excel.
 
 
-**Emergya
-**
-Proyecto 1 Mes (Abril 2018)
+**Emergya** Proyecto 1 Mes (Abril 2018)
 
-** Cargo: ** Analista Programador Junior
+**Cargo:** Analista Programador Junior
 
 - Realizar analisis y diseño
 - Programar en Java utilizando Frameworks Spring, Maven.
