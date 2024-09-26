@@ -63,7 +63,8 @@ la información. Además, cumplí con el SLA de los requerimientos.
 
 **Practicante profesional - Webketing**.
 Agosto 2015 – octubre 2015.
- Practicante profesional a cargo del diseño de páginas web, utilizando herramientas como Wordpress, CSS, HTML, PHP.
+
+Practicante profesional a cargo del diseño de páginas web, utilizando herramientas como Wordpress, CSS, HTML, PHP.
 Duración: 480 horas.
 ----
 Educacion
