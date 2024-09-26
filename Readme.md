@@ -17,9 +17,8 @@ He trabajado en diversas áreas y roles, incluyendo la gestión de datos comerci
 Mi compromiso con la excelencia se refleja en cada proyecto en el que trabajo, siempre buscando mejorar la calidad y eficiencia de los procesos de datos.
 ____
 ### Experiencia Laboral
-**Wom**.
 
-**Especialista Analytics Financiero**.
+**Especialista Analytics Financiero - Wom**.
 Julio 2022 – Actualidad.
 
 Actualmente, me dedico a analizar los indicadores de pagos de clientes, desarrollar tableros detallados
@@ -30,43 +29,42 @@ involuntario para contribuir a una mejora en las tasas de pago y reducir el ries
 mi objetivo es mejorar la retención de clientes y optimizar la gestión financiera mediante análisis de datos
 y estrategias centradas en el cliente.
 
+**Especialista Cobranzas - Wom**.
+Enero 2022 - Junio 2022.
+
+Anteriormente, fui responsable de los KPIs de churn involuntario, analicé la colección de clientes,
+entregué informes con la deuda de los clientes, desarrollé tableros con información de clientes en mora y
+realicé análisis de recupero y tasas de pago.
+
+**Product Manager Analytics - Wom**.
+Abril 2020 - Diciembre 2021.
+
+Me encargué de entregar indicadores de portabilidad y analizar comportamiento de ventas por
+segmento. También gestioné la disponibilidad de bases de clientes y llevé a cabo análisis de oferta
+comercial. Analicé los KPIs de la oferta comercial postpago y su tracción. Además, proporcioné
+información sobre migraciones y entregué el estado del comportamiento del ARPU postpago de la
+compañía. También comparé el market share de la industria y analicé su benchmark.
+
+**Analista Planificación comercial - Wom**.
+Junio 2018 - Marzo 2020.
+
+Automatizaba tareas de ETL, construía aplicativos para la correcta ejecución de Excel y mejorar el
+proceso de ETL. También apoyé a áreas con información de ventas a diferentes canales, realicé análisis
+de churn por camada de venta y limpié bases para la gerencia. Además, gestioné el canal backoffice de
+televentas y el TMO (tiempo medio de operación) del backoffice de televentas.
+
+**Analista datos - A&D Consultores Ltda**.
+Junio 2016 - Diciembre 2017
+
+Generaba extracción de bases, mantener aplicativos internos desarrollados en .NET y generar informes
+de asegurados. También administré servicios de servidores, creé macros en Excel y validé la calidad de
+la información. Además, cumplí con el SLA de los requerimientos.
 
 
-**Webketing**.
-
+**Practicante profesional - Webketing**.
 Agosto 2015 – octubre 2015.
-
-**Cargo**: Practicante profesional a cargo del diseño de páginas web, utilizando herramientas como Wordpress, CSS, HTML, PHP.
+ Practicante profesional a cargo del diseño de páginas web, utilizando herramientas como Wordpress, CSS, HTML, PHP.
 Duración: 480 horas.
-
-**FGRCHILE.**
-
-Junio 2016 – diciembre 2017. 
-
-**Cargo**: Analista programador computacional
-
-**Tareas:**
--	Realizar consultas SQL.
--	Realizar Procedimientos Almacenados.
--	Probar funcionalidades del software (Visual Basic).
--	Administrar servicios de servidores.
--	Programar en Visual Basic.
--	Entregar información de base de datos a diferentes departamentos del Área.
--	Tener control de diferentes BDD dentro de la empresa.
--	Apoyar al área de Desarrollo.
--	Crear Macros en Excel.
-
-
-**Emergya** Proyecto 1 Mes (Abril 2018)
-
-**Cargo:** Analista Programador Junior
-
-- Realizar analisis y diseño
-- Programar en Java utilizando Frameworks Spring, Maven.
-- Realizar Mockups.
-- Realizar Consultas SQL utilizando PostgresSql.
-- IDE de desarrollo Intellij.
-- Sistemas de versionamiento de código (GIT).
 ----
 Educacion
 
