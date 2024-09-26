@@ -2,8 +2,6 @@
 ## Matías Rodrigo Neira Fuentes
 ### Sobre Mi
 ____
-¡Buen día! Claro, puedo ayudarte a orientar tu descripción hacia un perfil de Data Engineer. Aquí tienes una versión adaptada:
-
 ---
 
 **Ingeniero en Informática con 7 años de experiencia, especializado en Data Engineering.** 
