@@ -17,6 +17,21 @@ He trabajado en diversas áreas y roles, incluyendo la gestión de datos comerci
 Mi compromiso con la excelencia se refleja en cada proyecto en el que trabajo, siempre buscando mejorar la calidad y eficiencia de los procesos de datos.
 ____
 ### Experiencia Laboral
+**Wom**.
+
+**Especialista Analytics Financiero**.
+Julio 2022 – Actualidad.
+
+Actualmente, me dedico a analizar los indicadores de pagos de clientes, desarrollar tableros detallados
+de facturación, y analizar el comportamiento de pago e incobrable. También colaboro en el análisis del
+comportamiento de clientes con servicios de valor agregado, hago seguimiento a los KPIs de suspensión,
+y desarrollo informes dirigidos al área de riesgo. Además, analizo el presupuesto y metas de churn
+involuntario para contribuir a una mejora en las tasas de pago y reducir el riesgo financiero. En resumen,
+mi objetivo es mejorar la retención de clientes y optimizar la gestión financiera mediante análisis de datos
+y estrategias centradas en el cliente.
+
+
+
 **Webketing**.
 
 Agosto 2015 – octubre 2015.
