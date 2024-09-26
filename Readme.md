@@ -1,5 +1,22 @@
 
 ## Matías Rodrigo Neira Fuentes
+### Sobre Mi
+____
+¡Buen día! Claro, puedo ayudarte a orientar tu descripción hacia un perfil de Data Engineer. Aquí tienes una versión adaptada:
+
+---
+
+**Ingeniero en Informática con 7 años de experiencia, especializado en Data Engineering.** 
+He trabajado en diversas áreas y roles, incluyendo la gestión de datos comerciales en Ventas, análisis de datos de oferta en Marketing, análisis financiero de clientes, gestión de carteras de deuda en Finanzas, y análisis de datos en una corredora de seguros. Me destaco por mi habilidad para diseñar, construir y mantener pipelines de datos eficientes y seguros, así como por mi capacidad para transformar datos crudos en información útil y accionable.
+
+**Habilidades clave:**
+- **Diseño y mantenimiento de arquitecturas de datos:** Experiencia en la creación de soluciones de almacenamiento que manejan grandes volúmenes de datos de manera eficiente.
+- **Desarrollo de pipelines ETL:** Habilidad para desarrollar y mantener pipelines de datos que aseguran la calidad y precisión de los datos.
+- **Programación y automatización:** Competente en lenguajes de programación como Python y Java, y en el uso de herramientas de automatización para mejorar la eficiencia de los procesos de datos.
+- **Análisis y transformación de datos:** Capacidad para analizar datos crudos y transformarlos en formatos útiles para el análisis y la toma de decisiones.
+- **Colaboración y trabajo en equipo:** Disfruto trabajando en equipo y colaborando con diferentes departamentos para entender y satisfacer sus necesidades de datos.
+
+Mi compromiso con la excelencia se refleja en cada proyecto en el que trabajo, siempre buscando mejorar la calidad y eficiencia de los procesos de datos.
 ____
 ### Experiencia Laboral
 **Webketing**.
