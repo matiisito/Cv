@@ -10,7 +10,7 @@ He trabajado en diversas áreas y roles, incluyendo la gestión de datos comerci
 **Habilidades clave:**
 - **Diseño y mantenimiento de arquitecturas de datos:** Experiencia en la creación de soluciones de almacenamiento que manejan grandes volúmenes de datos de manera eficiente.
 - **Desarrollo de pipelines ETL:** Habilidad para desarrollar y mantener pipelines de datos que aseguran la calidad y precisión de los datos.
-- **Programación y automatización:** Competente en lenguajes de programación como Python y Java, y en el uso de herramientas de automatización para mejorar la eficiencia de los procesos de datos.
+- **Programación y automatización:** Competente en lenguajes de programación como Python y en el uso de herramientas de automatización para mejorar la eficiencia de los procesos de datos.
 - **Análisis y transformación de datos:** Capacidad para analizar datos crudos y transformarlos en formatos útiles para el análisis y la toma de decisiones.
 - **Colaboración y trabajo en equipo:** Disfruto trabajando en equipo y colaborando con diferentes departamentos para entender y satisfacer sus necesidades de datos.
 
