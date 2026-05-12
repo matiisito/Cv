@@ -1,0 +1,820 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Matías Neira — Analytics Specialist · Revenue Assurance</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #070b12;
+    --surface: #0f1623;
+    --surface2: #162032;
+    --accent: #00e5ff;
+    --accent2: #ff6b35;
+    --accent3: #a78bfa;
+    --green: #22d3a0;
+    --text: #e2e8f0;
+    --muted: #4e6180;
+    --border: #1a2740;
+    --mono: 'IBM Plex Mono', monospace;
+    --sans: 'Inter', sans-serif;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--sans);
+    line-height: 1.65;
+    overflow-x: hidden;
+  }
+
+  /* Ambient glow */
+  body::after {
+    content: '';
+    position: fixed;
+    top: -30vh; left: -20vw;
+    width: 80vw; height: 80vh;
+    background: radial-gradient(ellipse, rgba(0,229,255,0.04) 0%, transparent 70%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* ── SCROLLBAR ── */
+  ::-webkit-scrollbar { width: 4px; }
+  ::-webkit-scrollbar-track { background: var(--bg); }
+  ::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 2px; }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 1rem 4rem;
+    background: rgba(7,11,18,0.9);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .logo {
+    font-family: var(--mono);
+    font-size: 0.8rem;
+    color: var(--accent);
+    letter-spacing: 0.15em;
+  }
+
+  .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+  .nav-links a {
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    color: var(--muted);
+    text-decoration: none;
+    letter-spacing: 0.1em;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--accent); }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: 4rem;
+    padding: 10rem 4rem 5rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+  }
+
+  .hero-left { }
+
+  .hero-eyebrow {
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    color: var(--accent);
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    margin-bottom: 1.25rem;
+    opacity: 0;
+    animation: up 0.7s 0.1s ease forwards;
+  }
+
+  h1 {
+    font-family: var(--mono);
+    font-size: clamp(2.8rem, 5vw, 4.5rem);
+    font-weight: 700;
+    line-height: 1.05;
+    letter-spacing: -0.03em;
+    margin-bottom: 0.5rem;
+    opacity: 0;
+    animation: up 0.7s 0.25s ease forwards;
+  }
+
+  .hero-role {
+    font-family: var(--mono);
+    font-size: clamp(1rem, 2vw, 1.35rem);
+    color: var(--accent2);
+    margin-bottom: 1.5rem;
+    opacity: 0;
+    animation: up 0.7s 0.4s ease forwards;
+  }
+
+  .hero-bio {
+    font-size: 1rem;
+    color: var(--muted);
+    max-width: 480px;
+    margin-bottom: 2.5rem;
+    line-height: 1.75;
+    opacity: 0;
+    animation: up 0.7s 0.55s ease forwards;
+  }
+
+  .hero-bio strong { color: var(--text); }
+
+  .cta-row {
+    display: flex; gap: 1rem; flex-wrap: wrap;
+    opacity: 0;
+    animation: up 0.7s 0.7s ease forwards;
+  }
+
+  .btn {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    padding: 0.7rem 1.6rem;
+    border-radius: 3px;
+    font-family: var(--mono);
+    font-size: 0.75rem;
+    letter-spacing: 0.08em;
+    text-decoration: none;
+    transition: all 0.2s;
+    border: none; cursor: pointer;
+  }
+
+  .btn-primary { background: var(--accent); color: #000; font-weight: 600; }
+  .btn-primary:hover { background: #fff; transform: translateY(-2px); }
+  .btn-ghost { background: transparent; color: var(--text); border: 1px solid var(--border); }
+  .btn-ghost:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-2px); }
+
+  /* ── HERO RIGHT — IMPACT CARDS ── */
+  .hero-right {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    opacity: 0;
+    animation: up 0.7s 0.85s ease forwards;
+  }
+
+  .impact-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 1.4rem 1.75rem;
+    position: relative;
+    overflow: hidden;
+    transition: border-color 0.2s, transform 0.2s;
+  }
+
+  .impact-card::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 3px;
+    background: var(--green);
+  }
+
+  .impact-card:nth-child(2)::before { background: var(--accent2); }
+  .impact-card:nth-child(3)::before { background: var(--accent3); }
+
+  .impact-card:hover { border-color: var(--green); transform: translateX(4px); }
+  .impact-card:nth-child(2):hover { border-color: var(--accent2); }
+  .impact-card:nth-child(3):hover { border-color: var(--accent3); }
+
+  .impact-amount {
+    font-family: var(--mono);
+    font-size: 1.7rem;
+    font-weight: 700;
+    color: var(--green);
+    line-height: 1;
+  }
+
+  .impact-card:nth-child(2) .impact-amount { color: var(--accent2); }
+  .impact-card:nth-child(3) .impact-amount { color: var(--accent3); }
+
+  .impact-desc {
+    font-size: 0.85rem;
+    color: var(--muted);
+    margin-top: 0.3rem;
+  }
+
+  .impact-tag {
+    display: inline-block;
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    padding: 0.2rem 0.6rem;
+    background: var(--surface2);
+    border-radius: 20px;
+    color: var(--muted);
+    margin-top: 0.5rem;
+    letter-spacing: 0.1em;
+  }
+
+  /* ── SHARED SECTION STYLES ── */
+  .section-wrap {
+    padding: 6rem 4rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+  }
+
+  .section-head { margin-bottom: 3rem; }
+
+  .section-eyebrow {
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    color: var(--accent);
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    margin-bottom: 0.4rem;
+  }
+
+  .section-title {
+    font-family: var(--mono);
+    font-size: clamp(1.6rem, 3vw, 2.2rem);
+    font-weight: 700;
+    color: var(--text);
+  }
+
+  /* ── SKILLS ── */
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+    gap: 1.25rem;
+  }
+
+  .skill-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 1.5rem;
+    transition: all 0.2s;
+  }
+
+  .skill-card:hover { border-color: var(--accent); transform: translateY(-3px); }
+
+  .skill-head {
+    display: flex; align-items: center; gap: 0.75rem;
+    margin-bottom: 1rem;
+  }
+
+  .skill-emoji { font-size: 1.4rem; }
+
+  .skill-name {
+    font-family: var(--mono);
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--text);
+  }
+
+  .pill-row { display: flex; flex-wrap: wrap; gap: 0.35rem; }
+
+  .pill {
+    font-family: var(--mono);
+    font-size: 0.68rem;
+    padding: 0.2rem 0.6rem;
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    color: var(--muted);
+    letter-spacing: 0.04em;
+  }
+
+  /* ── TIMELINE ── */
+  .timeline { padding-left: 1.5rem; }
+
+  .tl-item {
+    position: relative;
+    margin-bottom: 2.5rem;
+  }
+
+  .tl-item::before {
+    content: '';
+    position: absolute;
+    left: -1.5rem; top: 0; bottom: -2.5rem;
+    width: 1px;
+    background: linear-gradient(to bottom, var(--accent), transparent 90%);
+  }
+
+  .tl-item:last-child::before { display: none; }
+
+  .tl-dot {
+    position: absolute;
+    left: -1.85rem; top: 0.4rem;
+    width: 10px; height: 10px;
+    background: var(--accent);
+    border-radius: 50%;
+    box-shadow: 0 0 12px rgba(0,229,255,0.5);
+  }
+
+  .tl-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 1.75rem;
+    transition: border-color 0.2s;
+  }
+
+  .tl-card:hover { border-color: var(--accent); }
+
+  .tl-top {
+    display: flex; justify-content: space-between;
+    align-items: flex-start; flex-wrap: wrap; gap: 0.75rem;
+    margin-bottom: 1rem;
+  }
+
+  .tl-role {
+    font-family: var(--mono);
+    font-size: 1rem;
+    font-weight: 700;
+  }
+
+  .tl-company {
+    font-family: var(--mono);
+    font-size: 0.8rem;
+    color: var(--accent2);
+    margin-top: 0.2rem;
+  }
+
+  .tl-date {
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    padding: 0.25rem 0.75rem;
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    color: var(--muted);
+    white-space: nowrap;
+  }
+
+  .tl-list { list-style: none; margin-bottom: 1rem; }
+  .tl-list li {
+    font-size: 0.9rem;
+    color: var(--muted);
+    padding: 0.3rem 0 0.3rem 1.2rem;
+    position: relative;
+  }
+  .tl-list li::before {
+    content: '▸';
+    position: absolute; left: 0;
+    color: var(--accent);
+    font-size: 0.7rem;
+    top: 0.42rem;
+  }
+
+  .achievements { border-top: 1px solid var(--border); padding-top: 1rem; }
+
+  .ach-label {
+    font-family: var(--mono);
+    font-size: 0.68rem;
+    color: var(--green);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 0.75rem;
+  }
+
+  .ach-item {
+    display: flex; gap: 0.75rem; align-items: flex-start;
+    margin-bottom: 0.6rem;
+  }
+
+  .ach-icon { font-size: 1rem; flex-shrink: 0; margin-top: 0.1rem; }
+
+  .ach-text {
+    font-size: 0.88rem;
+    color: var(--text);
+    line-height: 1.5;
+  }
+
+  .ach-text .money {
+    font-family: var(--mono);
+    color: var(--green);
+    font-weight: 600;
+  }
+
+  /* ── EDUCATION ── */
+  .edu-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 1rem;
+  }
+
+  .edu-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 1.5rem;
+    transition: all 0.2s;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .edu-card::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--accent), var(--accent3));
+    opacity: 0;
+    transition: opacity 0.2s;
+  }
+
+  .edu-card:hover { border-color: var(--accent3); transform: translateY(-3px); }
+  .edu-card:hover::after { opacity: 1; }
+
+  .edu-year {
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    color: var(--accent2);
+    letter-spacing: 0.1em;
+    margin-bottom: 0.5rem;
+  }
+
+  .edu-degree {
+    font-family: var(--mono);
+    font-size: 0.88rem;
+    font-weight: 700;
+    margin-bottom: 0.4rem;
+  }
+
+  .edu-school { font-size: 0.85rem; color: var(--muted); }
+
+  /* ── CONTACT ── */
+  .contact-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+    gap: 1rem;
+  }
+
+  .contact-card {
+    display: flex; align-items: center; gap: 1rem;
+    padding: 1.25rem 1.5rem;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    text-decoration: none;
+    color: var(--text);
+    transition: all 0.2s;
+  }
+
+  .contact-card:hover { border-color: var(--accent); transform: translateY(-2px); }
+
+  .c-icon { font-size: 1.5rem; flex-shrink: 0; }
+  .c-label { font-family: var(--mono); font-size: 0.65rem; color: var(--muted); letter-spacing: 0.1em; text-transform: uppercase; }
+  .c-val { font-size: 0.85rem; margin-top: 0.15rem; word-break: break-all; }
+
+  /* ── FOOTER ── */
+  footer {
+    text-align: center;
+    padding: 2.5rem;
+    border-top: 1px solid var(--border);
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    color: var(--muted);
+    letter-spacing: 0.1em;
+    position: relative; z-index: 1;
+  }
+
+  footer span { color: var(--accent); }
+
+  /* ── ANIMATIONS ── */
+  @keyframes up {
+    from { opacity: 0; transform: translateY(22px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .reveal {
+    opacity: 0; transform: translateY(20px);
+    transition: opacity 0.55s ease, transform 0.55s ease;
+  }
+  .reveal.on { opacity: 1; transform: translateY(0); }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    .hero { grid-template-columns: 1fr; padding: 8rem 1.5rem 4rem; gap: 3rem; }
+    nav { padding: 1rem 1.5rem; }
+    .nav-links { display: none; }
+    .section-wrap { padding: 4rem 1.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">MNF // data</div>
+  <ul class="nav-links">
+    <li><a href="#skills">skills</a></li>
+    <li><a href="#experience">experiencia</a></li>
+    <li><a href="#education">educación</a></li>
+    <li><a href="#contact">contacto</a></li>
+  </ul>
+</nav>
+
+<!-- ── HERO ── -->
+<div class="hero">
+  <div class="hero-left">
+    <p class="hero-eyebrow">// analytics specialist · revenue assurance</p>
+    <h1>Matías<br>Neira<br>Fuentes</h1>
+    <p class="hero-role">Business & Revenue Assurance · Data Analyst</p>
+    <p class="hero-bio">
+      <strong>8+ años transformando datos en decisiones estratégicas.</strong>
+      Especialista en detección de fugas de revenue, pipelines ETL y dashboards ejecutivos.
+      Experto en SQL, Python, BigQuery y Power BI en entornos cloud GCP/AWS.
+    </p>
+    <div class="cta-row">
+      <a href="mailto:neirafuentesm@gmail.com" class="btn btn-primary">✉ Contactar</a>
+      <a href="https://www.linkedin.com/in/matias-neira-fuentes/" target="_blank" class="btn btn-ghost">LinkedIn ↗</a>
+      <a href="https://github.com/matiisito" target="_blank" class="btn btn-ghost">GitHub ↗</a>
+    </div>
+  </div>
+
+  <div class="hero-right">
+    <div class="impact-card">
+      <div class="impact-amount">$51M</div>
+      <div class="impact-desc">Impacto potencial mitigado — descuadres detectados en Amazon (2024–2025)</div>
+      <span class="impact-tag">REVENUE ASSURANCE</span>
+    </div>
+    <div class="impact-card">
+      <div class="impact-amount">$12M</div>
+      <div class="impact-desc">Fuga de revenue recuperada — problema crítico en cargos Spotify (ene–jul)</div>
+      <span class="impact-tag">BILLING ASSURANCE</span>
+    </div>
+    <div class="impact-card">
+      <div class="impact-amount">8+ años</div>
+      <div class="impact-desc">Experiencia en analítica financiera, ETL y KPIs de Billing, Collection y Churn</div>
+      <span class="impact-tag">WOM · TELECOMUNICACIONES</span>
+    </div>
+  </div>
+</div>
+
+<!-- ── SKILLS ── -->
+<section id="skills" class="section-wrap">
+  <div class="section-head reveal">
+    <p class="section-eyebrow">// habilidades técnicas</p>
+    <h2 class="section-title">Stack & Herramientas</h2>
+  </div>
+  <div class="skills-grid">
+    <div class="skill-card reveal">
+      <div class="skill-head"><span class="skill-emoji">🗄️</span><span class="skill-name">Data & SQL</span></div>
+      <div class="pill-row">
+        <span class="pill">BigQuery</span><span class="pill">Oracle SQL</span>
+        <span class="pill">MySQL</span><span class="pill">ETL / ELT</span>
+        <span class="pill">Data Quality</span><span class="pill">Data Governance</span>
+      </div>
+    </div>
+    <div class="skill-card reveal">
+      <div class="skill-head"><span class="skill-emoji">🐍</span><span class="skill-name">Python</span></div>
+      <div class="pill-row">
+        <span class="pill">Pandas</span><span class="pill">Automatización</span>
+        <span class="pill">ETL pipelines</span><span class="pill">Análisis de datos</span>
+        <span class="pill">OOP</span>
+      </div>
+    </div>
+    <div class="skill-card reveal">
+      <div class="skill-head"><span class="skill-emoji">📊</span><span class="skill-name">BI & Visualización</span></div>
+      <div class="pill-row">
+        <span class="pill">Power BI</span><span class="pill">DAX</span>
+        <span class="pill">Looker Studio</span><span class="pill">MicroStrategy</span>
+        <span class="pill">Excel Avanzado</span>
+      </div>
+    </div>
+    <div class="skill-card reveal">
+      <div class="skill-head"><span class="skill-emoji">☁️</span><span class="skill-name">Cloud & Infra</span></div>
+      <div class="pill-row">
+        <span class="pill">Google Cloud (GCP)</span><span class="pill">AWS SDK</span>
+        <span class="pill">Data Warehouse</span><span class="pill">Data Lake</span>
+        <span class="pill">Servidores</span>
+      </div>
+    </div>
+    <div class="skill-card reveal">
+      <div class="skill-head"><span class="skill-emoji">💼</span><span class="skill-name">KPIs Financieros</span></div>
+      <div class="pill-row">
+        <span class="pill">Churn</span><span class="pill">Morosidad</span>
+        <span class="pill">Recupero</span><span class="pill">ARPU</span>
+        <span class="pill">Revenue Assurance</span><span class="pill">DSO</span>
+      </div>
+    </div>
+    <div class="skill-card reveal">
+      <div class="skill-head"><span class="skill-emoji">🔧</span><span class="skill-name">Dev & Entornos</span></div>
+      <div class="pill-row">
+        <span class="pill">Git / GitHub</span><span class="pill">JupyterLab</span>
+        <span class="pill">PyCharm</span><span class="pill">VS Code</span>
+        <span class="pill">Anaconda</span><span class="pill">Google Colab</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── EXPERIENCE ── -->
+<section id="experience" class="section-wrap">
+  <div class="section-head reveal">
+    <p class="section-eyebrow">// trayectoria profesional</p>
+    <h2 class="section-title">Experiencia Laboral</h2>
+  </div>
+  <div class="timeline">
+
+    <div class="tl-item reveal">
+      <div class="tl-dot"></div>
+      <div class="tl-card">
+        <div class="tl-top">
+          <div>
+            <div class="tl-role">Analytics Specialist – Business Assurance</div>
+            <div class="tl-company">WOM Chile</div>
+          </div>
+          <div class="tl-date">Jul 2022 – Actualidad</div>
+        </div>
+        <ul class="tl-list">
+          <li>Análisis de indicadores de pagos, incobrables y comportamiento de cartera para identificar riesgos de revenue</li>
+          <li>Desarrollo de tableros BI ejecutivos con KPIs de morosidad, pagos, suspensión y recupero</li>
+          <li>Análisis de ciclo de vida de clientes con SVA (captura, rating, billing, cobranza) detectando fugas de revenue</li>
+        </ul>
+        <div class="achievements">
+          <div class="ach-label">★ Logros destacados</div>
+          <div class="ach-item">
+            <span class="ach-icon">💰</span>
+            <span class="ach-text">Identifiqué descuadres en <strong>Amazon</strong> con impacto potencial de <span class="money">$51 millones</span> (2024–2025), habilitando corrección proactiva.</span>
+          </div>
+          <div class="ach-item">
+            <span class="ach-icon">🔍</span>
+            <span class="ach-text">Corregí problema crítico en cargos de <strong>Spotify</strong> que generaba pérdidas de <span class="money">~$12 millones</span> (ene–jul), deteniendo la fuga.</span>
+          </div>
+          <div class="ach-item">
+            <span class="ach-icon">✅</span>
+            <span class="ach-text">Detecté no cobro de SVA en planes específicos, recuperando montos no facturados en ciclos posteriores.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="tl-item reveal">
+      <div class="tl-dot"></div>
+      <div class="tl-card">
+        <div class="tl-top">
+          <div>
+            <div class="tl-role">Specialist Collection</div>
+            <div class="tl-company">WOM Chile</div>
+          </div>
+          <div class="tl-date">Ene 2022 – Jun 2022</div>
+        </div>
+        <ul class="tl-list">
+          <li>Gestión integral de cobranzas con foco en reducción de churn involuntario y maximización del recupero</li>
+          <li>Monitoreo de KPIs de cartera en mora: morosidad, recupero, DSO y comportamiento de pago por segmento</li>
+          <li>Segmentación de clientes en mora para campañas de contacto basadas en datos históricos</li>
+        </ul>
+        <div class="achievements">
+          <div class="ach-label">★ Logros destacados</div>
+          <div class="ach-item">
+            <span class="ach-icon">⚙️</span>
+            <span class="ach-text">Automatización de tareas operativas, optimizando tiempos de gestión de cobranzas.</span>
+          </div>
+          <div class="ach-item">
+            <span class="ach-icon">📊</span>
+            <span class="ach-text">Implementé reportería en <strong>Power BI y Looker Studio</strong> para visibilidad de comportamiento de pagos.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="tl-item reveal">
+      <div class="tl-dot"></div>
+      <div class="tl-card">
+        <div class="tl-top">
+          <div>
+            <div class="tl-role">Product Manager Analytics</div>
+            <div class="tl-company">WOM Chile</div>
+          </div>
+          <div class="tl-date">Abr 2020 – Dic 2021</div>
+        </div>
+        <ul class="tl-list">
+          <li>Analítica comercial para segmento Postpago: ARPU, portabilidad, conversión y market share</li>
+          <li>Modelos de segmentación para campañas de retención, migraciones y optimización de oferta</li>
+          <li>Insights competitivos mediante benchmarks de la industria</li>
+        </ul>
+        <div class="achievements">
+          <div class="ach-label">★ Logros destacados</div>
+          <div class="ach-item">
+            <span class="ach-icon">📡</span>
+            <span class="ach-text">Sistema de monitoreo de <strong>Market Share</strong> que permitió a la gerencia ajustar estrategia competitiva en tiempo real.</span>
+          </div>
+          <div class="ach-item">
+            <span class="ach-icon">🤖</span>
+            <span class="ach-text">Automaticé el flujo de comunicación de oferta comercial, garantizando precisión en lanzamientos de nuevos planes.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="tl-item reveal">
+      <div class="tl-dot"></div>
+      <div class="tl-card">
+        <div class="tl-top">
+          <div>
+            <div class="tl-role">Commercial Planning Analyst</div>
+            <div class="tl-company">WOM Chile</div>
+          </div>
+          <div class="tl-date">Jun 2018 – Mar 2020</div>
+        </div>
+        <ul class="tl-list">
+          <li>Automatización de procesos ETL e integración de datos de distintos canales de venta</li>
+          <li>Herramientas internas para limpieza de bases de datos y análisis de churn por cohortes</li>
+          <li>Gestión de métricas operativas de televentas (TMO) con SQL y Excel avanzado</li>
+        </ul>
+        <div class="achievements">
+          <div class="ach-label">★ Logros destacados</div>
+          <div class="ach-item">
+            <span class="ach-icon">⚡</span>
+            <span class="ach-text">Reducción drástica de tiempos de procesamiento manual mediante automatización de ingesta de datos.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ── EDUCATION ── -->
+<section id="education" class="section-wrap">
+  <div class="section-head reveal">
+    <p class="section-eyebrow">// formación académica</p>
+    <h2 class="section-title">Educación</h2>
+  </div>
+  <div class="edu-grid">
+    <div class="edu-card reveal">
+      <div class="edu-year">2024 – Actualidad</div>
+      <div class="edu-degree">Diplomado Data Engineering</div>
+      <div class="edu-school">Universidad de Santiago de Chile (USACH)<br><small style="color:var(--muted);font-size:0.78rem;">GCP · AWS · Azure · ETL · Data Warehouse/Lake · Data Governance</small></div>
+    </div>
+    <div class="edu-card reveal">
+      <div class="edu-year">2016 – 2017</div>
+      <div class="edu-degree">Ing. en Ejecución Informática</div>
+      <div class="edu-school">Duoc UC — Sede Plaza Oeste</div>
+    </div>
+    <div class="edu-card reveal">
+      <div class="edu-year">2013 – 2015</div>
+      <div class="edu-degree">Técnico Superior Analista Programador</div>
+      <div class="edu-school">Duoc UC — Sede Plaza Oeste</div>
+    </div>
+  </div>
+</section>
+
+<!-- ── CONTACT ── -->
+<section id="contact" class="section-wrap">
+  <div class="section-head reveal">
+    <p class="section-eyebrow">// conectemos</p>
+    <h2 class="section-title">Contacto</h2>
+  </div>
+  <div class="contact-grid">
+    <a href="mailto:neirafuentesm@gmail.com" class="contact-card reveal">
+      <div class="c-icon">✉️</div>
+      <div><div class="c-label">Email</div><div class="c-val">neirafuentesm@gmail.com</div></div>
+    </a>
+    <a href="tel:+56954767669" class="contact-card reveal">
+      <div class="c-icon">📱</div>
+      <div><div class="c-label">Teléfono</div><div class="c-val">+56 9 5476 7669</div></div>
+    </a>
+    <a href="https://www.linkedin.com/in/matias-neira-fuentes/" target="_blank" class="contact-card reveal">
+      <div class="c-icon">💼</div>
+      <div><div class="c-label">LinkedIn</div><div class="c-val">matias-neira-fuentes</div></div>
+    </a>
+    <a href="https://github.com/matiisito" target="_blank" class="contact-card reveal">
+      <div class="c-icon">🐙</div>
+      <div><div class="c-label">GitHub</div><div class="c-val">github.com/matiisito</div></div>
+    </a>
+    <div class="contact-card reveal" style="cursor:default;">
+      <div class="c-icon">📍</div>
+      <div><div class="c-label">Ubicación</div><div class="c-val">Cerrillos, Santiago, Chile</div></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>Matías Rodrigo Neira Fuentes · <span>Analytics Specialist · Revenue Assurance</span> · Santiago, Chile · 2026</p>
+</footer>
+
+<script>
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) {
+        e.target.style.transitionDelay = `${(i % 4) * 0.09}s`;
+        e.target.classList.add('on');
+      }
+    });
+  }, { threshold: 0.08 });
+
+  document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+</script>
+</body>
+</html>
